@@ -1,47 +1,4 @@
+<app-header></app-header>
 <section>
-  <div class="home-container">
-    <div class="home-context">
-      <div class="home-title">
-        <h1>Register a Book</h1>
-      </div>
-      <form class="form" (ngSubmit)="onSubmit()">
-        <label for="title">Título:</label>
-        <input id="title" [(ngModel)]="novoItem.title" name="title" required>
-
-        <label for="author">Autor:</label>
-        <input id="author" [(ngModel)]="novoItem.author" name="author" required>
-
-        <label for="libraryId">ID da Biblioteca:</label>
-        <input id="libraryId" [(ngModel)]="novoItem.libraryId" name="libraryId" required>
-
-        <div class="rating-container">
-          <h3>Avaliação:</h3>
-          <div class="rating">
-            <input (click)="onStarClick(5)" name="rating" id="star5" type="radio">
-            <label for="star5"></label>
-            <input (click)="onStarClick(4)" name="rating" id="star4" type="radio">
-            <label for="star4"></label>
-            <input (click)="onStarClick(3)" name="rating" id="star3" type="radio">
-            <label for="star3"></label>
-            <input (click)="onStarClick(2)" name="rating" id="star2" type="radio">
-            <label for="star2"></label>
-            <input (click)="onStarClick(1)" name="rating" id="star1" type="radio">
-            <label for="star1"></label>
-          </div>
-
-        </div>
-        <button type="submit">Adicionar</button>
-      </form>
-    </div>
-
-    <div *ngIf="itens" class="items">
-      <h2>Itens Cadastrados</h2>
-      <ul class="items">
-        <li *ngFor="let item of itens">Book: {{ item.title }} - Author: {{ item.author }} - Rating: {{ item.rating }}
-        </li>
-      </ul>
-    </div>
-
-  </div>
-
+    <router-outlet></router-outlet>
 </section>

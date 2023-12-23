@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+
+}
+
+.header-context {
+    display: flex;
+    gap: 4rem;
+}
+
+.cta {
+    border: none;
+    background: none;
+    display: flex;
+}
+
+.cta span {
+    padding-bottom: 7px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.hover-underline-animation {
+    position: relative;
+    color: #fff;
+    padding-bottom: 20px;
+}
+
+.hover-underline-animation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}

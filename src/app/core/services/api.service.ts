@@ -19,4 +19,8 @@ export class ApiService {
   postData(item: Book): Observable<Book> {
     return this.http.post<Book>(`${this.apiUrl}/Books`, item);
   }
+
+  deleteData(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/Books/${id}`);
+  }
 }

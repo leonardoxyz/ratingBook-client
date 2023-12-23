@@ -7,10 +7,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.home-title {
-    text-align: center;
-}
-
 a,
 ul,
 li {
@@ -23,7 +19,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4rem;
+    min-height: 100vh;
 }
 
 .form {
@@ -32,21 +28,12 @@ li {
     row-gap: 1rem;
     font-size: 14px;
     font-weight: 700;
-    padding: 1rem;
 }
 
 input {
     border: 1px solid #fff;
     border-radius: 5px;
     padding: 1rem;
-}
-
-section {
-    padding: 6rem 0 2rem;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .rating-container {
