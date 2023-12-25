@@ -4,14 +4,16 @@ import { ApiService } from '../../core/services/api.service';
 import { catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Library } from '../../shared/models/library';
 
 @Component({
   selector: 'app-rbook',
   templateUrl: './rbook.component.html',
-  styleUrls: ['./rbook.component.css']
+  styleUrls: ['./rbook.component.css'],
 })
 export class RbookComponent implements OnInit {
   itens: Book[] = [];
+  libraries: any[] = [];
   novoItem: Book = new Book('', '', 0, '');
   toastVisible: boolean = false;
 
@@ -19,6 +21,7 @@ export class RbookComponent implements OnInit {
 
   ngOnInit() {
     this.loadData();
+    this.loadLibraries();
   }
 
   loadData() {
@@ -27,7 +30,7 @@ export class RbookComponent implements OnInit {
         this.itens = data;
       });
   }
-
+  
   postData(item: Book): Observable<Book> {
     return this.apiService.postData(item).pipe(
       catchError((error: HttpErrorResponse) => {
@@ -37,15 +40,37 @@ export class RbookComponent implements OnInit {
     );
   }
 
+  loadLibraries() {
+    this.apiService.getLibraries()
+      .subscribe(data => {
+        this.libraries = data;
+      });
+  }
+
+  deleteLibrary(item: Library) {
+    console.log('Library ID:', item.id);
+  
+    if (item.id) {
+      const confirmDelete = confirm(`Tem certeza de que deseja excluir o livro "${item.address}"?`);
+  
+      if (confirmDelete) {
+        this.apiService.deleteLibrary(item.id).subscribe(() => {
+          this.loadLibraries();
+        });
+      }
+    } else {
+      console.error('ID da Livraria não definido.');
+    }
+  }  
+
   onSubmit() {
     if (this.isFormValid()) {
       this.apiService.postData(this.novoItem)
         .subscribe(
           () => {
-            this.novoItem = new Book('', '', 0, '',);
+            this.novoItem = new Book('', '', 0, '');
             this.onStarClick(0);
             this.loadData();
-            this.toastVisible = true;
           },
           error => {
             console.error('Erro ao adicionar livro:', error);
@@ -53,7 +78,6 @@ export class RbookComponent implements OnInit {
         );
     }
   }
-
 
   isFormValid(): boolean {
     return this.novoItem.title.trim() !== '' && this.novoItem.author.trim() !== '' && this.novoItem.libraryId.trim() !== '';

@@ -10,6 +10,8 @@ import { ListComponent } from './pages/list/list.component';
 import { RbookComponent } from './pages/rbook/rbook.component';
 import { RlibraryComponent } from './pages/rlibrary/rlibrary.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -24,10 +26,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    ToastModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })

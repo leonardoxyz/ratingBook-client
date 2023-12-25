@@ -1,3 +1,7 @@
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+
 * {
     padding: 0;
     margin: 0;
@@ -15,59 +19,8 @@ li {
     list-style-type: none;
 }
 
-.home-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-}
-
-.form {
-    display: flex;
-    flex-direction: column;
-    row-gap: 1rem;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-input {
-    border: 1px solid #fff;
-    border-radius: 5px;
-    padding: 1rem;
-}
-
-.rating-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.rating {
-    display: inline-block;
-}
-
-.rating input {
-    display: none;
-}
-
-.rating label {
-    float: right;
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s;
-}
-
-.rating label:before {
-    content: '\2605';
-    font-size: 30px;
-}
-
-.rating input:checked~label,
-.rating label:hover,
-.rating label:hover~label {
-    color: #e58b1c;
-    transition: color 0.3s;
+section {
+    padding: 4rem;
 }
 
 button {
